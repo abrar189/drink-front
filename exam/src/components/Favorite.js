@@ -18,7 +18,7 @@ export class Favorite extends Component {
 
     componentDidMount = async () => {
         // http://localhost:8000/datadb?email=algourabrar@gmail.com
-        let result = await axios.get(`http://localhost:8000/datadb`);
+        let result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/datadb`);
         this.setState({
             drinkData: result.data
         })
@@ -34,7 +34,7 @@ export class Favorite extends Component {
         // }
         // ).catch(error => console.log(error));
         // // console.log(this.state.drinkData);
-        let result = await axios.delete(`http://localhost:8000/delete/${index}`);
+        let result = await axios.delete(`${process.env.REACT_APP_SERVER_URL}/delete/${index}`);
         this.setState({
             drinkData: result.data
         })
@@ -69,7 +69,7 @@ export class Favorite extends Component {
             idDrink:e.target.idDrink.value,
 
         };
-        axios.put(`http://localhost:8000/update/${this.state.idx}`, reqbody).then(response => {
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/update/${this.state.idx}`, reqbody).then(response => {
             this.setState({
                 drinkData: response.data
             })

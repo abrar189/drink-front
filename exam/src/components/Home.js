@@ -14,7 +14,7 @@ export class Home extends Component {
 
     componentDidMount = async () => {
         // http://localhost:8000/dataApi
-        let result = await axios.get(`http://localhost:8000/dataApi`);
+        let result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/dataApi`);
         this.setState({
             drinkData: result.data
         })
@@ -29,7 +29,7 @@ export class Home extends Component {
             idDrink: this.state.drinkData[index].idDrink,
 
         }
-        await axios.post('http://localhost:8000/addTOfav', objData);
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/addTOfav`, objData);
     }
     render() {
         return (
